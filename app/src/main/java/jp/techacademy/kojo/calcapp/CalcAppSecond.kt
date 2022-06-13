@@ -2,6 +2,7 @@ package jp.techacademy.kojo.calcapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import kotlinx.android.synthetic.main.activity_calc_app_second.*
@@ -15,24 +16,24 @@ class CalcAppSecond : AppCompatActivity() {
 
         val value1 = intent.getDoubleExtra("VALUE1", 0.0)
         val value2 = intent.getDoubleExtra("VALUE2", 0.0)
-        val buttonNum = intent.getBooleanArrayExtra("Button", )
+        val value3 = intent.getStringExtra("BTNNUM")
 
+        Log.d("kotlintest", "$value1")
+        Log.d("kotlintest", "$value2")
+        Log.d("kotlintest", "$value3")
 
+            if (value3 == "足し算") {
+                    Answer.text = "${value1 + value2}"
+            }
+            if (value3 == "引き算") {
+                    Answer.text = "${value1 - value2}"
+            }
+            if (value3 == "掛け算") {
+                    Answer.text = "${value1 * value2}"
+            }
+            if (value3 == "割り算") {
+                    Answer.text = "${value1 / value2}"
+            }
+         }
 
-        fun  showAnswer (ans: View) {
-
-            if (ans.id == R.id.button1) {
-                Answer.text = "${value1 + value2}"
-            }
-            if (ans.id == R.id.button2) {
-                Answer.text = "${value1 - value2}"
-            }
-            if (ans.id == R.id.button3)  {
-                Answer.text = "${value1 * value2}"
-            }
-            if (ans.id == R.id.button4) {
-                Answer.text = "${value1 / value2}"
-            }
-        }
-    }
 }
