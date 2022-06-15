@@ -27,52 +27,29 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
              val snackbar = Snackbar.make(rootLayout, "数字をいれてください", Snackbar.LENGTH_LONG)
              snackbar.show()
          } else {
-
-             when (v.id) {
-                 R.id.button1 -> {
-                     val btn: String = "足し算"
-                     val intent = Intent(this, CalcAppSecond::class.java)
-                     val x: Double = edit1.text.toString().toDouble()
-                     val y: Double = edit2.text.toString().toDouble()
-                     intent.putExtra("VALUE1", x)
-                     intent.putExtra("VALUE2", y)
-                     intent.putExtra("BTNNUM", btn)
-                     startActivity(intent)
-                 }
-                 R.id.button2 -> {
+             if (v.id == R.id.button1) {
+                 val btn: String = "足し算"
+                 calc(btn)
+             } else if (v.id == R.id.button2) {
                      val btn: String = "引き算"
-                     val intent = Intent(this, CalcAppSecond::class.java)
-                     val x: Double = edit1.text.toString().toDouble()
-                     val y: Double = edit2.text.toString().toDouble()
-                     intent.putExtra("VALUE1", x)
-                     intent.putExtra("VALUE2", y)
-                     intent.putExtra("BTNNUM", btn)
-                     startActivity(intent)
-
-                 }
-                 R.id.button3 -> {
-                     val btn: String = "掛け算"
-                     val intent = Intent(this, CalcAppSecond::class.java)
-                     val x: Double = edit1.text.toString().toDouble()
-                     val y: Double = edit2.text.toString().toDouble()
-                     intent.putExtra("VALUE1", x)
-                     intent.putExtra("VALUE2", y)
-                     intent.putExtra("BTNNUM", btn)
-                     startActivity(intent)
-
-                 }
-                 R.id.button4 -> {
-                     val btn: String = "割り算"
-                     val intent = Intent(this, CalcAppSecond::class.java)
-                     val x: Double = edit1.text.toString().toDouble()
-                     val y: Double = edit2.text.toString().toDouble()
-                     intent.putExtra("VALUE1", x)
-                     intent.putExtra("VALUE2", y)
-                     intent.putExtra("BTNNUM", btn)
-                     startActivity(intent)
-
-                 }
-             }
+                    calc(btn)
+                 } else if (v.id == R.id.button3) {
+                         val btn: String = "掛け算"
+                        calc(btn)
+                    } else if (v.id == R.id.button4) {
+                               val btn: String = "割り算"
+                                calc(btn)
+                    }
          }
+    }
+    private fun calc(btn:String) {
+        val intent = Intent(this, CalcAppSecond::class.java)
+        val x: Double = edit1.text.toString().toDouble()
+        val y: Double = edit2.text.toString().toDouble()
+        val z: String = btn
+        intent.putExtra("VALUE1", x)
+        intent.putExtra("VALUE2", y)
+        intent.putExtra("BTNNUM", z)
+        startActivity(intent)
     }
 }
